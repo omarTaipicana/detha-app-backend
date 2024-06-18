@@ -47,7 +47,7 @@ const create = catchError(async (req, res) => {
       "Verificación de correo electrónico de su usuario de Talento Humano DIGIN",
     html: `
     <h1> Saludos Cordiales ${firstName}  ${lastName}</h1>
-        <h2>Se ha creado su usuario para el Sistema Web DETHA</h2>
+        <h2>Se ha creado su usuario para el Sistema Web de Talento Humano DIGIN</h2>
         <p>Para crear su contraseña de click en el siguiente enlace</p>
         <a href="${link}" >${link}</a>`,
   });
