@@ -13,7 +13,6 @@ const getAll = catchError(async (req, res) => {
 const create = catchError(async (req, res) => {
   const {
     cI,
-    password,
     email,
     firstName,
     lastName,
@@ -22,7 +21,7 @@ const create = catchError(async (req, res) => {
     isVerified,
     frontBaseUrl,
   } = req.body;
-  const bcryptPassword = await bcrypt.hash(password, 10);
+  const bcryptPassword = await bcrypt.hash("12345", 10);
   const result = await User.create({
     cI,
     password: bcryptPassword,
