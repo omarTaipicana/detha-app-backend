@@ -18,7 +18,7 @@ userRouter.route('/users/reset_password')
     .post(sendEmailResetPassword);  
 
 userRouter.route('/users/reset_password/:code')
-    .post(resetPassword);  
+    .post(verifyCode);  
 
 userRouter.route('/users/verify/:code')   
     .post(verifyCode)
