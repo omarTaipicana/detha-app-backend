@@ -9,6 +9,7 @@ const User = sequelize.define("user", {
   },
   password: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   email: {
     type: DataTypes.STRING,
@@ -29,6 +30,11 @@ const User = sequelize.define("user", {
   },
   rol: {
     type: DataTypes.TEXT,
+    allowNull: false,
+    defaultValue: "AsistenteTH",
+  },
+  enabled: {
+    type: DataTypes.BOOLEAN,
     allowNull: false,
   },
   isVerified: {

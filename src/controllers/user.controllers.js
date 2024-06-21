@@ -18,6 +18,7 @@ const create = catchError(async (req, res) => {
     lastName,
     nomenclature,
     rol,
+    enabled,
     isVerified,
     frontBaseUrl,
   } = req.body;
@@ -30,6 +31,7 @@ const create = catchError(async (req, res) => {
     lastName,
     nomenclature,
     rol,
+    enabled,
     isVerified,
   });
   const code = require("crypto").randomBytes(32).toString("hex");
@@ -77,6 +79,7 @@ const update = catchError(async (req, res) => {
     lastName,
     nomenclature,
     rol,
+    enabled,
     isVerified,
   } = req.body;
   const result = await User.update(
@@ -87,6 +90,7 @@ const update = catchError(async (req, res) => {
       lastName,
       nomenclature,
       rol,
+      enabled,
       isVerified,
     },
     {
