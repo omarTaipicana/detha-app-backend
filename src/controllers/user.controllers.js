@@ -50,7 +50,7 @@ const create = catchError(async (req, res) => {
     <h1> Saludos Cordiales ${firstName}  ${lastName}</h1>
         <h2>Se ha creado su usuario para el Sistema Web de Talento Humano DIGIN</h2>
         <p>Para crear su contraseña de click en el siguiente enlace</p>
-        <a href="${link}" >${link}</a>`,
+        <a href="${link}" >creación de contraseña</a>`,
   });
 
   return res.status(201).json(result);
@@ -158,9 +158,10 @@ const sendEmailResetPassword = catchError(async (req, res) => {
     to: email,
     subject: "Recuperación de contraseña de su Usuario de Talento Humano DIGIN",
     html: `
-          <h1>Saludos cordiales usuario con correo electrónico ${email}</h1>
-              <h2>Para camabiar su contraseña, de click en el siguiente enlace</h2>
-              <a href="${link}" >${link}</a>`,
+          <h1>Saludos cordiales usuario con correo electrónico</h1>
+          <h2> ${email}</h2>
+              <h3>Para camabiar su contraseña, de click en el siguiente enlace</h3>
+              <a href="${link}" >cambie su contraseña</a>`,
   });
 
   return res.json(user);
