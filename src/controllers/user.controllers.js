@@ -42,16 +42,16 @@ const create = catchError(async (req, res) => {
     userId: result.id,
   });
 
-  await sendEmail({
-    to: email,
-    subject:
-      "Verificación de correo electrónico de su usuario de Talento Humano DIGIN",
-    html: `
-    <h1> Saludos Cordiales ${firstName}  ${lastName}</h1>
-        <h2>Se ha creado su usuario para el Sistema Web de Talento Humano DIGIN</h2>
-        <p>Para crear su contraseña de click en el siguiente enlace</p>
-        <a href="${link}" >creación de contraseña</a>`,
-  });
+  // await sendEmail({
+  //   to: email,
+  //   subject:
+  //     "Verificación de correo electrónico de su usuario de Talento Humano DIGIN",
+  //   html: `
+  //   <h1> Saludos Cordiales ${firstName}  ${lastName}</h1>
+  //       <h2>Se ha creado su usuario para el Sistema Web de Talento Humano DIGIN</h2>
+  //       <p>Para crear su contraseña de click en el siguiente enlace</p>
+  //       <a href="${link}" >creación de contraseña</a>`,
+  // });
 
   return res.status(201).json(result);
 });
