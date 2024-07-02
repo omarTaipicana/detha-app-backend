@@ -24,7 +24,19 @@ const User = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  direccion: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  unidad: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   nomenclature: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  cargo: {
     type: DataTypes.STRING,
     allowNull: false,
   },
