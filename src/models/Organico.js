@@ -65,6 +65,14 @@ const Organico = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    unidadSubzona: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    tipoDesignacion: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     timestamps: false,

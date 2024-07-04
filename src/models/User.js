@@ -32,11 +32,11 @@ const User = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  nomenclature: {
+  unidadSubzona: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  cargo: {
+  tipoDesignacion: {
     type: DataTypes.STRING,
     allowNull: false,
   },
