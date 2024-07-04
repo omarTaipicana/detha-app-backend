@@ -126,7 +126,7 @@ const login = catchError(async (req, res) => {
       .json({ mesagge: "No ha realizado la creación de su contraseña" });
 
   const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
-    expiresIn: "1d",
+    expiresIn: "2d",
   });
 
   return res.json({ user, token });
