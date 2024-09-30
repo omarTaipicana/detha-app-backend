@@ -1,39 +1,32 @@
 const catchError = require('../utils/catchError');
-const ServidorPolicial = require('../models/ServidorPolicial');
-const Pases = require('../models/Pase');
-const Ascenso = require('../models/Ascenso');
+const Licencia = require('../models/Licencia');
 
 const getAll = catchError(async(req, res) => {
-    const results = await ServidorPolicial.findAll({
-        include: [
-            Pases,       
-            Ascenso     
-        ]
-    });
+    const results = await Licencia.findAll();
     return res.json(results);
 });
 
 const create = catchError(async(req, res) => {
-    const result = await ServidorPolicial.create(req.body);
+    const result = await Licencia.create(req.body);
     return res.status(201).json(result);
 });
 
 const getOne = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await ServidorPolicial.findByPk(id);
+    const result = await Licencia.findByPk(id);
     if(!result) return res.sendStatus(404);
     return res.json(result);
 });
 
 const remove = catchError(async(req, res) => {
     const { id } = req.params;
-    await ServidorPolicial.destroy({ where: {id} });
+    await Licencia.destroy({ where: {id} });
     return res.sendStatus(204);
 });
 
 const update = catchError(async(req, res) => {
     const { id } = req.params;
-    const result = await ServidorPolicial.update(
+    const result = await Licencia.update(
         req.body,
         { where: {id}, returning: true }
     );

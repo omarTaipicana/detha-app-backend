@@ -29,7 +29,7 @@ const Variables = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    causaDesplazamiento: {
+    planAccion: {
       type: DataTypes.STRING,
       allowNull: false,
     },
