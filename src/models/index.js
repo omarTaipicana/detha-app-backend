@@ -9,6 +9,9 @@ const Ascenso = require("./Ascenso");
 const Licencia = require("./Licencia");
 const Novedad = require("./Novedad");
 const Capacitacion = require("./Capacitacion");
+const Talla = require("./Talla");
+const Funcion = require("./Funcion");
+const Vacaciones = require("./Vacaciones");
 
 EmailCode.belongsTo(User);
 User.hasOne(EmailCode);
@@ -36,3 +39,12 @@ Servidorpolicial.hasMany(Novedad)
 
 Capacitacion.belongsTo(Servidorpolicial)
 Servidorpolicial.hasMany(Capacitacion)
+
+Talla.belongsTo(Servidorpolicial)
+Servidorpolicial.hasMany(Talla)
+
+Funcion.belongsTo(Servidorpolicial)
+Servidorpolicial.hasMany(Funcion)
+
+Vacaciones.belongsTo(Servidorpolicial)
+Servidorpolicial.hasMany(Vacaciones)

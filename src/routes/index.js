@@ -12,6 +12,9 @@ const ascensoRouter = require("./ascenso.router");
 const licenciaRouter = require("./licencia.router");
 const novedadRouter = require("./novedad.router");
 const capacitacionRouter = require("./capacitacion.router");
+const tallaRouter = require("./talla.router");
+const funcionRouter = require("./funcion.router");
+const vacacionesRouter = require("./vacaciones.router");
 const router = express.Router();
 
 // colocar las rutas aquí
@@ -29,6 +32,9 @@ router.use(ascensoRouter)
 router.use(licenciaRouter)
 router.use(novedadRouter)
 router.use(capacitacionRouter)
+router.use(tallaRouter)
+router.use(funcionRouter)
+router.use(vacacionesRouter)
 
 
 module.exports = router;
