@@ -117,13 +117,13 @@ const update = catchError(async (req, res) => {
 const login = catchError(async (req, res) => {
   const { cI, password } = req.body;
   const user = await User.findOne({ where: { cI: cI } });
-  if (!user) return res.status(401).json({ mesagge: "Usuario Incorrecto" });
+  if (!user) return res.status(401).json({ message: "Usuario Incorrecto" });
   const isValid = await bcrypt.compare(password, user.password);
-  if (!isValid) return res.status(401).json({ mesagge: "Contraseña Incorrecta" });
+  if (!isValid) return res.status(401).json({ message: "Contraseña Incorrecta" });
   if (!user.isVerified)
     return res
       .status(401)
-      .json({ mesagge: "No ha realizado la creación de su contraseña" });
+      .json({ message: "No ha realizado la creación de su contraseña" });
 
   const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
     expiresIn: "2d",
@@ -136,9 +136,9 @@ const verifyCode = catchError(async (req, res) => {
   const { code } = req.params;
   const { password } = req.body;
   const emailCode = await EmailCode.findOne({ where: { code: code } });
-  if (!emailCode) return res.status(401).json({ mesagge: "Código de verificación invalido" });
+  if (!emailCode) return res.status(401).json({ message: "Código de verificación invalido" });
   if (!password)
-    return res.status(401).json({ mesagge: "Ingrese su contraseña" });
+    return res.status(401).json({ message: "Ingrese su contraseña" });
   const bcryptPassword = await bcrypt.hash(password, 10);
 
   const user = await User.findByPk(emailCode.userId);
@@ -159,7 +159,7 @@ const getLoggedUser = catchError(async (req, res) => {
 const sendEmailResetPassword = catchError(async (req, res) => {
   const { email, frontBaseUrl } = req.body;
   const user = await User.findOne({ where: { email: email } });
-  if (!user) return res.status(401).json({ mesagge: "Usuario Incorrecto" });
+  if (!user) return res.status(401).json({ message: "Usuario Incorrecto" });
   const code = require("crypto").randomBytes(32).toString("hex");
   const link = `${frontBaseUrl}/${code}`;
   await EmailCode.create({
@@ -183,7 +183,7 @@ const resetPassword = catchError(async (req, res) => {
   const { password } = req.body;
   const { code } = req.params;
   const emailCode = await EmailCode.findOne({ where: { code: code } });
-  if (!emailCode) return res.status(401).json({ mesagge: "Código de verificación invalido" });
+  if (!emailCode) return res.status(401).json({ message: "Código de verificación invalido" });
   const bcryptPassword = await bcrypt.hash(password, 10);
   const id = emailCode.userId;
 

@@ -2,12 +2,14 @@ const catchError = require('../utils/catchError');
 const ServidorPolicial = require('../models/ServidorPolicial');
 const Pases = require('../models/Pase');
 const Ascenso = require('../models/Ascenso');
+const Desplazamiento = require('../models/Desplazamiento');
 
 const getAll = catchError(async(req, res) => {
     const results = await ServidorPolicial.findAll({
         include: [
             Pases,       
-            Ascenso     
+            Ascenso,
+            Desplazamiento  
         ]
     });
     return res.json(results);
