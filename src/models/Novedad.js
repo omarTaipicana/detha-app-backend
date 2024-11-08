@@ -22,7 +22,7 @@ const Novedad = sequelize.define("novedad", {
   },
   suscribe: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   fechaDocumento: {
     type: DataTypes.DATEONLY,

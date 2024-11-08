@@ -15,6 +15,7 @@ const Contactos = sequelize.define("contactos", {
   contacto: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique:true
   },
 });
 

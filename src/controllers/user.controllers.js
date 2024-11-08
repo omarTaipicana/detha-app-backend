@@ -23,6 +23,9 @@ const create = catchError(async (req, res) => {
     rol,
     enabled,
     isVerified,
+    usuarioControl,
+    usuarioRegistro,
+    usuarioEdicion,
     frontBaseUrl,
   } = req.body;
   const bcryptPassword = await bcrypt.hash("12345", 10);
@@ -38,6 +41,9 @@ const create = catchError(async (req, res) => {
     tipoDesignacion,
     rol,
     enabled,
+    usuarioControl,
+    usuarioRegistro,
+    usuarioEdicion,
     isVerified,
   });
   const code = require("crypto").randomBytes(32).toString("hex");
@@ -71,8 +77,9 @@ const getOne = catchError(async (req, res) => {
 
 const remove = catchError(async (req, res) => {
   const { id } = req.params;
+  const result = await User.findByPk(id);
   await User.destroy({ where: { id } });
-  return res.sendStatus(204);
+  return res.json(result).sendStatus(204);
 });
 
 const update = catchError(async (req, res) => {
@@ -89,6 +96,9 @@ const update = catchError(async (req, res) => {
     tipoDesignacion,
     rol,
     enabled,
+    usuarioControl,
+    usuarioRegistro,
+    usuarioEdicion,
     isVerified,
   } = req.body;
   const result = await User.update(
@@ -103,6 +113,9 @@ const update = catchError(async (req, res) => {
       tipoDesignacion,
       rol,
       enabled,
+      usuarioControl,
+      usuarioRegistro,
+      usuarioEdicion,
       isVerified,
     },
     {
@@ -123,7 +136,7 @@ const login = catchError(async (req, res) => {
   if (!user.isVerified)
     return res
       .status(401)
-      .json({ message: "No ha realizado la creación de su contraseña" });
+      .json({ message: "No ha creado de su contraseña" });
 
   const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
     expiresIn: "2d",

@@ -3,13 +3,29 @@ const ServidorPolicial = require('../models/ServidorPolicial');
 const Pases = require('../models/Pase');
 const Ascenso = require('../models/Ascenso');
 const Desplazamiento = require('../models/Desplazamiento');
+const Contactos = require('../models/Contactos');
+const Novedad = require('../models/Novedad');
+const Vacaciones = require('../models/Vacaciones');
+const Funcion = require('../models/Funcion');
+const Titulo = require('../models/Titulo');
+const Licencia = require('../models/Licencia');
+const Capacitacion = require('../models/Capacitacion');
+const Talla = require('../models/Talla');
 
 const getAll = catchError(async(req, res) => {
     const results = await ServidorPolicial.findAll({
         include: [
-            Pases,       
+            Pases,  
+            Desplazamiento,
+            // Novedad,
+            // Vacaciones,  
             Ascenso,
-            Desplazamiento  
+            // Funcion,     
+            Contactos,
+            // Titulo,
+            // Licencia,
+            // Capacitacion,
+            // Talla            
         ]
     });
     return res.json(results);
@@ -29,8 +45,9 @@ const getOne = catchError(async(req, res) => {
 
 const remove = catchError(async(req, res) => {
     const { id } = req.params;
+    const result = await ServidorPolicial.findByPk(id);
     await ServidorPolicial.destroy({ where: {id} });
-    return res.sendStatus(204);
+    return res.json(result).sendStatus(204);
 });
 
 const update = catchError(async(req, res) => {

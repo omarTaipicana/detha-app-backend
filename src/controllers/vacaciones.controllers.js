@@ -20,8 +20,9 @@ const getOne = catchError(async(req, res) => {
 
 const remove = catchError(async(req, res) => {
     const { id } = req.params;
+    const result = await Vacaciones.findByPk(id);
     await Vacaciones.destroy({ where: {id} });
-    return res.sendStatus(204);
+    return res.json(result).sendStatus(204);
 });
 
 const update = catchError(async(req, res) => {

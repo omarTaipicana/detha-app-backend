@@ -12,6 +12,10 @@ const Desplazamiento = sequelize.define("desplazamiento", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  lugarComision: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
   tipoDocumento: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -51,6 +55,10 @@ const Desplazamiento = sequelize.define("desplazamiento", {
   nomenclaturaNoDigin: {
     type: DataTypes.STRING,
     allowNull: true,
+  },
+  unidadSubzona: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   causaDesplazamiento: {
     type: DataTypes.STRING,
