@@ -19,7 +19,7 @@ const create = catchError(async (req, res) => {
     direccion,
     unidad,
     unidadSubzona,
-    tipoDesignacion,    
+    tipoDesignacion,
     rol,
     enabled,
     isVerified,
@@ -132,24 +132,24 @@ const login = catchError(async (req, res) => {
   const user = await User.findOne({ where: { cI: cI } });
   if (!user) return res.status(401).json({ message: "Usuario Incorrecto" });
   const isValid = await bcrypt.compare(password, user.password);
-  if (!isValid) return res.status(401).json({ message: "Contraseña Incorrecta" });
+  if (!isValid)
+    return res.status(401).json({ message: "Contraseña Incorrecta" });
   if (!user.isVerified)
-    return res
-      .status(401)
-      .json({ message: "No ha creado de su contraseña" });
+    return res.status(401).json({ message: "No ha creado de su contraseña" });
 
   const token = jwt.sign({ user }, process.env.TOKEN_SECRET, {
-    expiresIn: "2d",
+    expiresIn: 120 * 60,
   });
 
-  return res.json({ user, token });
+  return res.json({ token });
 });
 
 const verifyCode = catchError(async (req, res) => {
   const { code } = req.params;
   const { password } = req.body;
   const emailCode = await EmailCode.findOne({ where: { code: code } });
-  if (!emailCode) return res.status(401).json({ message: "Código de verificación invalido" });
+  if (!emailCode)
+    return res.status(401).json({ message: "Código de verificación invalido" });
   if (!password)
     return res.status(401).json({ message: "Ingrese su contraseña" });
   const bcryptPassword = await bcrypt.hash(password, 10);
@@ -196,7 +196,8 @@ const resetPassword = catchError(async (req, res) => {
   const { password } = req.body;
   const { code } = req.params;
   const emailCode = await EmailCode.findOne({ where: { code: code } });
-  if (!emailCode) return res.status(401).json({ message: "Código de verificación invalido" });
+  if (!emailCode)
+    return res.status(401).json({ message: "Código de verificación invalido" });
   const bcryptPassword = await bcrypt.hash(password, 10);
   const id = emailCode.userId;
 

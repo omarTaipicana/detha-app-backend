@@ -58,11 +58,11 @@ const Desplazamiento = sequelize.define("desplazamiento", {
   },
   provinciaDesplazamiento: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   cantonDesplazamiento: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   unidadSubzona: {
     type: DataTypes.STRING,

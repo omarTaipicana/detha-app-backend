@@ -12,6 +12,10 @@ const Novedad = sequelize.define("novedad", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  descripcion: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   tipoDocumento: {
     type: DataTypes.STRING,
     allowNull: false,
